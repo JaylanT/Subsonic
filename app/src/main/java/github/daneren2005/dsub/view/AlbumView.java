@@ -74,10 +74,9 @@ public class AlbumView extends UpdateView2<MusicDirectory.Entry, ImageLoader> {
 		String artist = "";
 		if(showArtist) {
 			artist = album.getArtist();
-			if (artist == null) {
-				artist = "";
-			}
-			if (album.getYear() != null) {
+			if (artist.isEmpty()) {
+				artist += album.getYear();
+			} else if (album.getYear() != null) {
 				artist += " - " + album.getYear();
 			}
 		} else if(album.getYear() != null) {
