@@ -390,7 +390,9 @@ public class MusicDirectory implements Serializable {
         }
 
         public String getAlbum() {
-            return album;
+            return album
+					.replaceFirst("\\[[0-9]{4}] ?", "")
+					.replaceFirst("\\[Disk (.+?)]", "- CD$1");
         }
 
 		public boolean isAlbum() {
@@ -399,9 +401,13 @@ public class MusicDirectory implements Serializable {
 
 		public String getAlbumDisplay() {
 			if(album != null && title.startsWith("Disc ")) {
-				return album;
+				return album
+						.replaceFirst("\\[[0-9]{4}] ?", "")
+						.replaceFirst("\\[Disk (.+?)]", "- CD$1");
 			} else {
-				return title;
+				return title
+						.replaceFirst("\\[[0-9]{4}] ?", "")
+						.replaceFirst("\\[Disk (.+?)]", "- CD$1");
 			}
 		}
 

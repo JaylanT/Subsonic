@@ -1170,7 +1170,9 @@ public class SelectDirectoryFragment extends SubsonicFragment implements Section
 			titleView.setText(podcastName);
 			titleView.setPadding(0, 6, 4, 8);
 		} else if(name != null) {
-			titleView.setText(name);
+			titleView.setText(name
+					.replaceFirst("\\[[0-9]{4}] ?", "")
+					.replaceFirst("\\[Disk (.+?)]", "- CD$1"));
 
 			if(artistInfo != null) {
 				titleView.setPadding(0, 6, 4, 8);
